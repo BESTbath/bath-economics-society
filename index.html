@@ -10,21 +10,10 @@
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <style>
-    /* DEFAULT = LIGHT */
-    :root,[data-theme="light"]{
-      --bg:#f4f7fc;--sur:#fff;--sur2:#edf2fb;--line:#d3dfef;
-      --tx:#0e1f3b;--mu:#4d6a91;--pr:#00347a;--pr2:#0a56c4;--ps:#daeaf9;
-      --sh:0 8px 32px rgba(8,24,60,.09);
-    }
-    /* BATH BLUE MODE */
-    [data-theme="dark"]{
-      --bg:#00142e;--sur:#00235a;--sur2:#002f78;--line:#0a4491;
-      --tx:#e8f0ff;--mu:#9ab4e0;--pr:#7fb2f8;--pr2:#a8ccff;--ps:#001e50;
-      --sh:0 10px 36px rgba(0,0,0,.45);
-    }
+    :root,[data-theme="light"]{--bg:#f4f7fc;--sur:#fff;--sur2:#edf2fb;--line:#d3dfef;--tx:#0e1f3b;--mu:#4d6a91;--pr:#00347a;--pr2:#0a56c4;--ps:#daeaf9;--sh:0 8px 32px rgba(8,24,60,.09);}
+    [data-theme="dark"]{--bg:#00142e;--sur:#00235a;--sur2:#002f78;--line:#0a4491;--tx:#e8f0ff;--mu:#9ab4e0;--pr:#7fb2f8;--pr2:#a8ccff;--ps:#001e50;--sh:0 10px 36px rgba(0,0,0,.45);}
     :root{--D:'Boska',Georgia,serif;--B:'Satoshi',Inter,sans-serif;--r:18px;--sp:72px;--W:1140px;}
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
+    *{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
     body{font-family:var(--B);font-size:clamp(1rem,.95rem + .25vw,1.125rem);color:var(--tx);background:var(--bg);line-height:1.65;min-height:100dvh;-webkit-font-smoothing:antialiased;transition:background .25s,color .25s}
     a{text-decoration:none;color:inherit}img,svg{display:block;max-width:100%;height:auto}
     button{cursor:pointer;border:none;background:none;font:inherit;color:inherit}
@@ -41,28 +30,21 @@
     .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mu);font-weight:600}
     .mu{color:var(--mu)}.hidden{display:none!important}
     .skip{position:absolute;left:16px;top:-60px;background:var(--pr);color:#fff;padding:10px 14px;border-radius:10px;z-index:999}.skip:focus{top:16px}
-    /* HEADER */
     header{position:sticky;top:0;z-index:100;-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);background:color-mix(in oklab,var(--bg) 88%,transparent);border-bottom:1px solid var(--line);transition:background .25s,border-color .25s}
     .hdr{display:flex;align-items:center;justify-content:space-between;min-height:74px;gap:12px}
-    .brand{display:flex;align-items:center;gap:12px;flex-shrink:0}
-    .brand svg{width:38px;height:38px;color:var(--pr)}.brand b{display:block;font-size:15px;font-weight:700}.brand small{display:block;font-size:12px;color:var(--mu)}
-    /* Desktop nav centred */
+    .brand{display:flex;align-items:center;gap:12px;flex-shrink:0}.brand svg{width:38px;height:38px;color:var(--pr)}.brand b{display:block;font-size:15px;font-weight:700}.brand small{display:block;font-size:12px;color:var(--mu)}
     .desk-nav{display:flex;align-items:center;gap:2px;flex:1;justify-content:center}
     .desk-nav a{padding:9px 14px;border-radius:999px;font-size:14px;color:var(--mu);transition:.18s ease;font-weight:500}
     .desk-nav a:hover,.desk-nav a.on{background:var(--sur2);color:var(--tx)}
     .hdr-act{display:flex;gap:8px;align-items:center;flex-shrink:0}
     .ib{width:44px;height:44px;border-radius:999px;border:1.5px solid var(--line);display:grid;place-items:center;background:var(--sur);transition:.18s ease}.ib:hover{background:var(--sur2)}
-    .theme-wrap{display:flex;align-items:center;gap:6px}
-    .theme-lbl{font-size:12px;color:var(--mu);font-weight:600;white-space:nowrap}
-    /* Mobile */
+    .theme-wrap{display:flex;align-items:center;gap:6px}.theme-lbl{font-size:12px;color:var(--mu);font-weight:600;white-space:nowrap}
     .mob-btn{display:none;width:44px;height:44px;border-radius:999px;border:1.5px solid var(--line);place-items:center;background:var(--sur);flex-shrink:0}
     .mob-menu{position:absolute;left:0;right:0;top:74px;padding:0 16px 12px;display:none;z-index:99}.mob-menu.open{display:block}
     .mob-menu nav{flex-direction:column;align-items:stretch;padding:8px;border-radius:18px;background:var(--sur);border:1px solid var(--line);box-shadow:var(--sh)}
     .mob-menu nav a{display:block;padding:11px 14px;border-radius:12px;font-size:15px;color:var(--mu);font-weight:500;transition:.15s ease}.mob-menu nav a:hover,.mob-menu nav a.on{background:var(--sur2);color:var(--tx)}
-    /* admin bar */
     .abar{background:var(--pr);color:#fff;padding:10px 0;font-size:13px}.abr{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
     .pg{display:none}.pg.on{display:block}
-    /* hero */
     .hero{padding:88px 0 64px}.hg{display:grid;grid-template-columns:1.15fr .85fr;gap:28px;align-items:end}
     .hero h1{font-family:var(--D);font-size:clamp(48px,9vw,108px);line-height:.9;letter-spacing:-.03em;max-width:11ch}
     .hsub{margin-top:18px;color:var(--mu);max-width:54ch;font-size:16px}.ha{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
@@ -88,7 +70,6 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
-
 <div id="abar" class="abar hidden"><div class="W abr">
   <span>&#9679; Admin mode</span>
   <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
@@ -96,14 +77,12 @@
     <button id="logoutBtn" style="color:rgba(255,255,255,.8);font-size:13px;text-decoration:underline">Log out</button>
   </div>
 </div></div>
-
 <header>
   <div class="W hdr">
     <a class="brand" href="#home" aria-label="Bath Economics Society">
       <svg viewBox="0 0 64 64" fill="none" aria-hidden="true"><circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="2.5"/><path d="M17 26h30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M20 39c3-8 9-12 18-12 5 0 9 1 11 3" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M23 44l5-24 7 15 7-17 5 26" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <div><b>Bath Economics Society</b><small>University of Bath</small></div>
     </a>
-
     <nav class="desk-nav" aria-label="Primary navigation">
       <a href="#home" data-route="home">Home</a>
       <a href="#about" data-route="about">About</a>
@@ -111,7 +90,6 @@
       <a href="#newsletter" data-route="newsletter">Newsletter</a>
       <a href="#sponsors" data-route="sponsors">Sponsors</a>
     </nav>
-
     <div class="hdr-act">
       <div class="theme-wrap">
         <span class="theme-lbl" id="themeLbl">Bath Blue</span>
@@ -135,7 +113,6 @@
     </nav>
   </div>
 </header>
-
 <main id="main">
   <section id="home" class="pg on">
     <div class="hero"><div class="W hg">
@@ -172,7 +149,6 @@
       </div>
     </div></div>
   </section>
-
   <section id="about" class="pg sec"><div class="W">
     <div class="ph"><div><p class="lbl">About us</p><h1 id="about_title" style="font-family:var(--D);font-size:clamp(32px,5vw,60px);margin-top:8px">About BES</h1></div><p class="mu">Everything you need to know about Bath Economics Society.</p></div>
     <div class="g2">
@@ -182,12 +158,10 @@
       <div class="card"><h3 style="font-family:var(--D);font-size:20px;margin-bottom:12px">Events</h3><div id="about_events" class="md"></div></div>
     </div>
   </div></section>
-
   <section id="announcements" class="pg sec"><div class="W">
     <div class="ph"><div><p class="lbl">Announcements</p><h1 style="font-family:var(--D);font-size:clamp(32px,5vw,60px);margin-top:8px">Latest from the committee.</h1></div><p class="mu">Events, deadlines, speaker announcements, and society news.</p></div>
     <div id="annList" class="list"><div class="card sk" style="min-height:100px"></div><div class="card sk" style="min-height:80px"></div></div>
   </div></section>
-
   <section id="newsletter" class="pg sec"><div class="W">
     <div class="ph"><div><p class="lbl">Weekly newsletter</p><h1 style="font-family:var(--D);font-size:clamp(32px,5vw,60px);margin-top:8px">The BES weekly brief.</h1></div><p class="mu">One issue every week &mdash; events, economics, opportunities, and society news.</p></div>
     <div class="gnl">
@@ -195,13 +169,11 @@
       <div class="card"><p class="lbl">Latest issue</p><h2 id="ftitle" style="font-family:var(--D);font-size:clamp(24px,4vw,44px);margin:10px 0 8px;line-height:1.05">Select an issue</h2><p id="fdate" style="font-size:13px;color:var(--mu);margin-bottom:12px"></p><p id="fsummary" class="mu" style="font-size:15px;margin-bottom:16px"></p><div id="fbody" class="md"></div></div>
     </div>
   </div></section>
-
   <section id="sponsors" class="pg sec"><div class="W">
     <div class="ph"><div><p class="lbl">Sponsors</p><h1 style="font-family:var(--D);font-size:clamp(32px,5vw,60px);margin-top:8px">Our partners and sponsors.</h1></div><p class="mu">The organisations that support Bath Economics Society.</p></div>
     <div id="spBoard" class="g4"><div class="sp2 sk" style="min-height:120px"></div><div class="sp2 sk" style="min-height:120px"></div></div>
   </div></section>
 </main>
-
 <footer class="foot"><div class="W fg">
   <div>
     <a class="brand" href="#home" style="margin-bottom:12px"><svg viewBox="0 0 64 64" fill="none" width="34" height="34" aria-hidden="true"><circle cx="32" cy="32" r="28" stroke="currentColor" stroke-width="2.5"/><path d="M17 26h30" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M20 39c3-8 9-12 18-12 5 0 9 1 11 3" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M23 44l5-24 7 15 7-17 5 26" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b>Bath Economics Society</b><small>University of Bath</small></div></a>
@@ -209,39 +181,34 @@
   </div>
   <nav class="fl" aria-label="Footer"><a href="#home">Home</a><a href="#about">About</a><a href="#announcements">Announcements</a><a href="#newsletter">Newsletter</a><a href="#sponsors">Sponsors</a></nav>
 </div></footer>
-
 <script>
-// ── SET YOUR GITHUB USERNAME (only change needed) ──────────────
+// ── SET YOUR GITHUB USERNAME ──────────────────────────────────
 const GITHUB_USER = 'BESTbath';
 const GITHUB_REPO = 'bath-economics-society';
 const BRANCH      = 'main';
-// ──────────────────────────────────────────────────────────────
+// ─────────────────────────────────────────────────────────────
 
-const RAW = `https://raw.githubusercontent.com/${GITHUB_USER}/${GITHUB_REPO}/${BRANCH}`;
-const API = `https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents`;
+const RAW = 'https://raw.githubusercontent.com/' + GITHUB_USER + '/' + GITHUB_REPO + '/' + BRANCH;
+const API = 'https://api.github.com/repos/' + GITHUB_USER + '/' + GITHUB_REPO + '/contents';
 
-// THEME — default light, toggle = Bath Blue
+// THEME
 const H=document.documentElement;
 const tBtn=document.getElementById('themeBtn'),tLbl=document.getElementById('themeLbl'),tIco=document.getElementById('themeIco');
 const MOON='<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
 const SUN='<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
-function setTheme(t){
-  H.setAttribute('data-theme',t);
-  if(t==='dark'){tIco.innerHTML=SUN;tLbl.textContent='Light mode';tBtn.setAttribute('aria-label','Switch to light mode');}
-  else{tIco.innerHTML=MOON;tLbl.textContent='Bath Blue';tBtn.setAttribute('aria-label','Switch to Bath Blue mode');}
-}
-setTheme('light'); // always start light
-tBtn.onclick=()=>setTheme(H.getAttribute('data-theme')==='dark'?'light':'dark');
+function setTheme(t){H.setAttribute('data-theme',t);if(t==='dark'){tIco.innerHTML=SUN;tLbl.textContent='Light mode';tBtn.setAttribute('aria-label','Switch to light mode');}else{tIco.innerHTML=MOON;tLbl.textContent='Bath Blue';tBtn.setAttribute('aria-label','Switch to Bath Blue mode');}}
+setTheme('light');
+tBtn.onclick=function(){setTheme(H.getAttribute('data-theme')==='dark'?'light':'dark');};
 
 // MOBILE NAV
 const mBtn=document.getElementById('menuBtn'),mMenu=document.getElementById('mobMenu');
-mBtn.onclick=()=>{const o=mMenu.classList.toggle('open');mBtn.setAttribute('aria-expanded',String(o));};
+mBtn.onclick=function(){var o=mMenu.classList.toggle('open');mBtn.setAttribute('aria-expanded',String(o));};
 
 // ROUTING
 function route(){
-  const r=location.hash.replace('#','')||'home';
-  document.querySelectorAll('.pg').forEach(p=>p.classList.toggle('on',p.id===r));
-  document.querySelectorAll('[data-route]').forEach(a=>a.classList.toggle('on',a.dataset.route===r));
+  var r=location.hash.replace('#','')||'home';
+  document.querySelectorAll('.pg').forEach(function(p){p.classList.toggle('on',p.id===r);});
+  document.querySelectorAll('[data-route]').forEach(function(a){a.classList.toggle('on',a.dataset.route===r);});
   mMenu.classList.remove('open');mBtn.setAttribute('aria-expanded','false');
   window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -249,86 +216,108 @@ window.addEventListener('hashchange',route);route();
 
 // NETLIFY IDENTITY
 if(window.netlifyIdentity){
-  netlifyIdentity.on('init',u=>{if(u)document.getElementById('abar').classList.remove('hidden');});
-  netlifyIdentity.on('login',()=>{document.getElementById('abar').classList.remove('hidden');netlifyIdentity.close();});
-  netlifyIdentity.on('logout',()=>document.getElementById('abar').classList.add('hidden'));
+  netlifyIdentity.on('init',function(u){if(u)document.getElementById('abar').classList.remove('hidden');});
+  netlifyIdentity.on('login',function(){document.getElementById('abar').classList.remove('hidden');netlifyIdentity.close();});
+  netlifyIdentity.on('logout',function(){document.getElementById('abar').classList.add('hidden');});
 }
-document.getElementById('logoutBtn').onclick=()=>{if(window.netlifyIdentity)netlifyIdentity.logout();};
+document.getElementById('logoutBtn').onclick=function(){if(window.netlifyIdentity)netlifyIdentity.logout();};
 
 // HELPERS
-function setText(id,v){const e=document.getElementById(id);if(e&&v!=null)e.textContent=v;}
-function setHtml(id,v){const e=document.getElementById(id);if(e&&v!=null)e.innerHTML=typeof marked!=='undefined'?marked.parse(String(v)):v;}
-function fmtDate(d){const x=new Date(d);return isNaN(x)?d:x.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});}
+function setText(id,v){var e=document.getElementById(id);if(e&&v!=null)e.textContent=v;}
+function setHtml(id,v){var e=document.getElementById(id);if(e&&v!=null)e.innerHTML=(typeof marked!=='undefined')?marked.parse(String(v)):v;}
+function fmtDate(d){var x=new Date(d);return isNaN(x.getTime())?d:x.toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'});}
 
 async function getJson(path){
-  try{const r=await fetch(`${RAW}${path}`,{cache:'no-cache'});if(r.ok)return r.json();}catch(e){}
-  try{const r=await fetch(path);if(r.ok)return r.json();}catch(e){}
+  try{var r=await fetch(RAW+path,{cache:'no-cache'});if(r.ok)return await r.json();}catch(e){}
   return null;
 }
 
+// FRONT MATTER PARSER — fixed to handle \r\n and \n from GitHub raw files
 function parseFM(txt){
-  const m=txt.match(/^---[\r\n]+([\s\S]*?)[\r\n]+---[\r\n]*([\s\S]*)$/);
-  if(!m)return{body:txt};
-  const o={};
-  m[1].split('\n').forEach(l=>{const i=l.indexOf(': ');if(i>-1){const k=l.slice(0,i).trim();let v=l.slice(i+2).trim();if(v.startsWith('"')&&v.endsWith('"'))v=v.slice(1,-1);o[k]=v;}});
-  o.body=m[2].trim();return o;
+  // Normalise line endings
+  var t = txt.replace(/\r\n/g, '\n').replace(/\r/g, '\n').trim();
+  var o = {};
+  // Check if starts with ---
+  if(t.startsWith('---')){
+    var rest = t.slice(3);
+    var end = rest.indexOf('\n---');
+    if(end !== -1){
+      var fm = rest.slice(0, end);
+      o.body = rest.slice(end + 4).trim();
+      fm.split('\n').forEach(function(l){
+        var i = l.indexOf(': ');
+        if(i > -1){
+          var k = l.slice(0,i).trim();
+          var v = l.slice(i+2).trim();
+          if(v.startsWith('"') && v.endsWith('"')) v = v.slice(1,-1);
+          if(v.startsWith("'") && v.endsWith("'")) v = v.slice(1,-1);
+          o[k] = v;
+        }
+      });
+      return o;
+    }
+  }
+  o.body = t;
+  return o;
 }
 
-// AUTO-DISCOVERY — GitHub API scans folders automatically.
-// Publishing via CMS saves to GitHub; new files appear on site instantly.
-// You never need to edit this file again after setting your username above.
+async function getMd(url){
+  try{var r=await fetch(url,{cache:'no-cache'});if(r.ok)return parseFM(await r.text());}catch(e){}
+  return null;
+}
+
+// AUTO-DISCOVERY via GitHub API
 async function listFolder(folder){
-  if(GITHUB_USER==='BESTbath')return[];
   try{
-    const r=await fetch(`${API}${folder}?ref=${BRANCH}`,{headers:{'Accept':'application/vnd.github.v3+json'},cache:'no-cache'});
-    if(r.ok){const f=await r.json();return f.filter(x=>x.name.endsWith('.md')).map(x=>`${RAW}${folder}/${x.name}`);}
+    var r=await fetch(API+folder+'?ref='+BRANCH,{headers:{'Accept':'application/vnd.github.v3+json'},cache:'no-cache'});
+    if(r.ok){
+      var files=await r.json();
+      if(Array.isArray(files)){
+        return files.filter(function(x){return x.name.endsWith('.md');}).map(function(x){return RAW+folder+'/'+x.name;});
+      }
+    }
   }catch(e){}
   return[];
 }
 
-async function getMd(url){
-  try{const r=await fetch(url,{cache:'no-cache'});if(r.ok)return parseFM(await r.text());}catch(e){}
-  return null;
-}
-
 async function loadFolder(folder){
-  const urls=await listFolder(folder);
+  var urls=await listFolder(folder);
   if(!urls.length){
-    const fb={'/_announcements':[`${RAW}/_announcements/2026-06-30-welcome.md`],'/_newsletters':[`${RAW}/_newsletters/2026-06-30-issue-01.md`],'/_sponsors':[`${RAW}/_sponsors/su-bath.md`]};
-    const posts=await Promise.all((fb[folder]||[]).map(getMd));
-    return posts.filter(Boolean).sort((a,b)=>new Date(b.date)-new Date(a.date));
+    var fb={'/_announcements':[RAW+'/_announcements/2026-06-30-welcome.md'],'/_newsletters':[RAW+'/_newsletters/2026-06-30-issue-01.md'],'/_sponsors':[RAW+'/_sponsors/su-bath.md']};
+    var posts=await Promise.all((fb[folder]||[]).map(getMd));
+    return posts.filter(Boolean).sort(function(a,b){return new Date(b.date)-new Date(a.date);});
   }
-  const posts=await Promise.all(urls.map(getMd));
-  return posts.filter(Boolean).sort((a,b)=>new Date(b.date)-new Date(a.date));
+  var posts=await Promise.all(urls.map(getMd));
+  return posts.filter(Boolean).sort(function(a,b){return new Date(b.date)-new Date(a.date);});
 }
 
 async function boot(){
-  const hp=await getJson('/_data/homepage.json');
+  var hp=await getJson('/_data/homepage.json');
   if(hp){setText('hero_title',hp.hero_title);setText('hero_intro',hp.hero_intro);setText('panel_title',hp.panel_title);setText('panel_1',hp.panel_1);setText('panel_2',hp.panel_2);setText('panel_3',hp.panel_3);setText('section_title',hp.section_title);setText('section_copy',hp.section_copy);setText('pillar_academic',hp.pillar_academic);setText('pillar_careers',hp.pillar_careers);setText('pillar_community',hp.pillar_community);}
 
-  const ab=await getJson('/_data/about.json');
+  var ab=await getJson('/_data/about.json');
   if(ab){setText('about_title',ab.title);setHtml('about_mission',ab.mission);setHtml('about_benefits',ab.benefits);setHtml('about_committee',ab.committee);setHtml('about_events',ab.events);}
 
-  const ft=await getJson('/_data/footer.json');
+  var ft=await getJson('/_data/footer.json');
   if(ft)setText('footer_text',ft.text);
 
   // Announcements
-  const al=document.getElementById('annList');al.innerHTML='';
-  const anns=await loadFolder('/_announcements');
+  var al=document.getElementById('annList');al.innerHTML='';
+  var anns=await loadFolder('/_announcements');
   if(!anns.length){al.innerHTML='<div class="empty"><h3>No announcements yet</h3><p>Check back soon.</p></div>';}
-  else anns.forEach(p=>{const d=document.createElement('div');d.className='card post';d.innerHTML=`<div class="meta"><span class="chip">${p.category||'News'}</span><span style="font-size:13px;color:var(--mu)">${fmtDate(p.date)}</span></div><h3>${p.title||''}</h3><p>${p.body||''}</p>`;al.appendChild(d);});
+  else{anns.forEach(function(p){var d=document.createElement('div');d.className='card post';d.innerHTML='<div class="meta"><span class="chip">'+(p.category||'News')+'</span><span style="font-size:13px;color:var(--mu)">'+fmtDate(p.date)+'</span></div><h3>'+(p.title||'')+'</h3><p>'+(p.body||'')+'</p>';al.appendChild(d);});}
 
   // Newsletters
-  const nl=document.getElementById('nlList');nl.innerHTML='';
-  const nls=await loadFolder('/_newsletters');
+  var nl=document.getElementById('nlList');nl.innerHTML='';
+  var nls=await loadFolder('/_newsletters');
   if(!nls.length){nl.innerHTML='<div class="empty"><h3>No issues yet</h3><p>Coming soon.</p></div>';}
-  else{nls.forEach((p,i)=>{const d=document.createElement('div');d.className='card post';d.style.cursor='pointer';d.innerHTML=`<div class="meta"><span class="chip">Issue</span><span style="font-size:13px;color:var(--mu)">${fmtDate(p.date)}</span></div><h3>${p.title||''}</h3><p>${p.summary||''}</p>`;d.onclick=()=>{setText('ftitle',p.title);setText('fdate',fmtDate(p.date));setText('fsummary',p.summary);setHtml('fbody',p.body);document.querySelectorAll('#nlList .post').forEach(x=>x.style.background='');d.style.background='var(--sur2)';};nl.appendChild(d);if(i===0)d.click();});}
+  else{nls.forEach(function(p,i){var d=document.createElement('div');d.className='card post';d.style.cursor='pointer';d.innerHTML='<div class="meta"><span class="chip">Issue</span><span style="font-size:13px;color:var(--mu)">'+fmtDate(p.date)+'</span></div><h3>'+(p.title||'')+'</h3><p>'+(p.summary||'')+'</p>';d.onclick=function(){setText('ftitle',p.title);setText('fdate',fmtDate(p.date));setText('fsummary',p.summary);setHtml('fbody',p.body);document.querySelectorAll('#nlList .post').forEach(function(x){x.style.background='';});d.style.background='var(--sur2)';};nl.appendChild(d);if(i===0)d.click();});}
 
   // Sponsors
-  const sb=document.getElementById('spBoard');sb.innerHTML='';
-  const sps=await loadFolder('/_sponsors');
+  var sb=document.getElementById('spBoard');sb.innerHTML='';
+  var sps=await loadFolder('/_sponsors');
   if(!sps.length){sb.innerHTML='<div class="empty" style="grid-column:1/-1"><h3>Sponsors coming soon</h3></div>';}
-  else{sps.sort((a,b)=>(+a.order||99)-(+b.order||99));sps.forEach(s=>{const t=document.createElement('div');t.className='sp2';const inner=s.logo&&s.logo!==''&&s.logo!=='""'?`<img src="${s.logo}" alt="${s.title}" style="max-width:160px;max-height:56px;object-fit:contain" loading="lazy">`:`<b style="font-size:16px;font-family:var(--D)">${s.title||'Sponsor'}</b>`;t.innerHTML=s.url?`<a href="${s.url}" target="_blank" rel="noopener noreferrer" style="display:grid;place-items:center;width:100%;height:100%">${inner}</a>`:inner;sb.appendChild(t);});}
+  else{sps.sort(function(a,b){return(+a.order||99)-(+b.order||99);});sps.forEach(function(s){var t=document.createElement('div');t.className='sp2';var inner=(s.logo&&s.logo!==''&&s.logo!=='""')?'<img src="'+s.logo+'" alt="'+s.title+'" style="max-width:160px;max-height:56px;object-fit:contain" loading="lazy">':'<b style="font-size:16px;font-family:var(--D)">'+(s.title||'Sponsor')+'</b>';t.innerHTML=s.url?'<a href="'+s.url+'" target="_blank" rel="noopener noreferrer" style="display:grid;place-items:center;width:100%;height:100%">'+inner+'</a>':inner;sb.appendChild(t);});}
 }
 boot();
 </script>
