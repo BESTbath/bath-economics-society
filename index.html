@@ -267,7 +267,7 @@ async function getJson(path){
 }
 
 function parseFM(txt){
-  const m=txt.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
+  const m=txt.match(/^---[\r\n]+([\s\S]*?)[\r\n]+---[\r\n]*([\s\S]*)$/);
   if(!m)return{body:txt};
   const o={};
   m[1].split('\n').forEach(l=>{const i=l.indexOf(': ');if(i>-1){const k=l.slice(0,i).trim();let v=l.slice(i+2).trim();if(v.startsWith('"')&&v.endsWith('"'))v=v.slice(1,-1);o[k]=v;}});
