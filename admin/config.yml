@@ -1,0 +1,112 @@
+backend:
+  name: git-gateway
+  branch: main
+media_folder: "assets"
+public_folder: "/assets"
+collections:
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - label: "Branding & Logo"
+        name: "branding"
+        file: "_data/branding.json"
+        fields:
+          - {label: "Logo Image (upload to replace SVG logo)", name: "logo_url", widget: "image", required: false}
+          - {label: "Logo Alt Text", name: "logo_alt", widget: "string", default: "Bath Economics Society"}
+      - label: "Homepage"
+        name: "homepage"
+        file: "_data/homepage.json"
+        fields:
+          - {label: "Hero Headline", name: "hero_title", widget: "string"}
+          - {label: "Hero Introduction", name: "hero_intro", widget: "text"}
+          - {label: "Stat 1 — Number (e.g. 500+)", name: "stat1_number", widget: "string"}
+          - {label: "Stat 1 — Label", name: "stat1_label", widget: "string"}
+          - {label: "Stat 2 — Number", name: "stat2_number", widget: "string"}
+          - {label: "Stat 2 — Label", name: "stat2_label", widget: "string"}
+          - {label: "Stat 3 — Number", name: "stat3_number", widget: "string"}
+          - {label: "Stat 3 — Label", name: "stat3_label", widget: "string"}
+          - {label: "Panel Headline", name: "panel_title", widget: "string"}
+          - {label: "Panel Item 1 — Announcements", name: "panel_1", widget: "text"}
+          - {label: "Panel Item 2 — Newsletter", name: "panel_2", widget: "text"}
+          - {label: "Panel Item 3 — Sponsors", name: "panel_3", widget: "text"}
+          - {label: "Section Headline", name: "section_title", widget: "string"}
+          - {label: "Section Copy", name: "section_copy", widget: "text"}
+          - {label: "Academic Pillar", name: "pillar_academic", widget: "text"}
+          - {label: "Careers Pillar", name: "pillar_careers", widget: "text"}
+          - {label: "Community Pillar", name: "pillar_community", widget: "text"}
+      - label: "About Us"
+        name: "about"
+        file: "_data/about.json"
+        fields:
+          - {label: "Page Title", name: "title", widget: "string"}
+          - {label: "Mission", name: "mission", widget: "markdown"}
+          - {label: "Member Benefits", name: "benefits", widget: "markdown"}
+          - {label: "Committee", name: "committee", widget: "markdown"}
+          - {label: "Events", name: "events", widget: "markdown"}
+      - label: "Footer"
+        name: "footer"
+        file: "_data/footer.json"
+        fields:
+          - {label: "Footer Text", name: "text", widget: "text"}
+  - name: "committee"
+    label: "Committee Members"
+    folder: "_committee"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Full Name", name: "name", widget: "string"}
+      - {label: "Role / Position", name: "role", widget: "string"}
+      - {label: "Academic Year (e.g. 2025-26)", name: "year", widget: "string"}
+      - {label: "Photo", name: "photo", widget: "image", required: false}
+      - {label: "LinkedIn URL", name: "linkedin", widget: "string", required: false}
+      - {label: "Email Address", name: "email", widget: "string", required: false}
+      - {label: "Display Order (1 = first)", name: "order", widget: "number", default: 99}
+  - name: "events"
+    label: "Events"
+    folder: "_events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Event Title", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD"}
+      - {label: "Time (e.g. 6:00 PM)", name: "time", widget: "string", required: false}
+      - {label: "Location", name: "location", widget: "string", required: false}
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["Social", "Academic", "Careers", "Speaker", "Workshop", "Other"]
+      - {label: "Event Image", name: "image", widget: "image", required: false}
+      - {label: "Description", name: "description", widget: "text"}
+  - name: "announcements"
+    label: "Announcements"
+    folder: "_announcements"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - label: "Category"
+        name: "category"
+        widget: "select"
+        options: ["Event", "Careers", "Society news", "Deadline", "Homepage notice"]
+      - {label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD"}
+      - {label: "Content", name: "body", widget: "text"}
+  - name: "newsletters"
+    label: "Weekly Newsletters"
+    folder: "_newsletters"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Headline", name: "title", widget: "string"}
+      - {label: "Date", name: "date", widget: "datetime", format: "YYYY-MM-DD"}
+      - {label: "Short Summary", name: "summary", widget: "text"}
+      - {label: "Full Body", name: "body", widget: "markdown"}
+  - name: "sponsors"
+    label: "Sponsors"
+    folder: "_sponsors"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "Sponsor Name", name: "title", widget: "string"}
+      - {label: "Website URL", name: "url", widget: "string", required: false}
+      - {label: "Logo Image", name: "logo", widget: "image", required: false}
+      - {label: "Display Order (1 = first)", name: "order", widget: "number", default: 99}
